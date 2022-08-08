@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block changeContent %}
+
+<div class="loginForm">
+    <h2> {{ message }} </h2>
+    <h2>Login - Ingresa con tu mail y clave</h2>
+    <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="formButton">LogIn</button>
+    </form>
+<div>
+{% endblock %}

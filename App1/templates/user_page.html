@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+
+{% block changeContent %}
+
+</div>
+    <div class="post">
+        <div class="postElements">    
+
+            
+        
+             <div class="title"><h2>{{ user.username }}</h2></div>
+            <p>Nombre: {{ user.first_name }}</p>
+            <p> Apellido: {{ user.last_name }}</p>
+            <p> Mail: {{ user.email }}</p>  
+       
+
+
+            <div class="backButton"><a href=" {% url 'user_profiles' %}"><h4>Volver a perfiles</h4></a></div>    
+            <div class="backButton"><a href=" {% url 'dash' %}"><h4>Blog</h4></a></div>
+        </div>        
+        
+
+    </div>
+    
+{% endblock %}

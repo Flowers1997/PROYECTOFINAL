@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block changeContent %}
+
+<div class=postForm>
+    <h2>Cambiar Avatar</h2>
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="formButton">Guardar</button>
+    </form>
+<div>
+{% endblock %}

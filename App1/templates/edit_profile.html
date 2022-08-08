@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block changeContent %}
+
+<div class="loginForm">
+    <h2>Editar perfil de {{ usuario }}</h2>
+    <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="formButton">Guardar cambios</button>
+    </form>
+<div>
+{% endblock %}

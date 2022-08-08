@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+{% block changeContent %}
+<div class="loginMessage">
+    <h1> Perfil {{ usuario }}</h1>
+    <h2>{{ message }}</h2>
+</div>
+    <div class="post">
+        
+        <div class="title"><h2>{{ user.username }}</h2></div>
+        <div class="avatar">
+            <img height="100px" width="100px" src="{{url}}" alt=""/>
+        </div>
+            <p>Nombre: {{ user.first_name }}</p>
+        <p> Apellido: {{ user.last_name }}</p>
+        <p> Mail: {{ user.email }}</p>      
+        <div class="backButton"><a href=" {% url 'dash' %}"><h4>Volver</h4></a></div>
+        {% if request.user.is_authenticated %}
+        <div class="editButton"><a href=" {% url 'edit_profile' %}"><h4>Editar perfil</h4></a></div>
+        <div class="editButton"><a href=" {% url 'add_avatar' %}"><h4>Cambiar Avatar</h4></a></div>
+
+        {% endif %}
+
+
+    </div>
+{% endblock %}

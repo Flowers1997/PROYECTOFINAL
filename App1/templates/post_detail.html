@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block changeContent %}
+    <div class="post">
+        <div class="postElements">
+            {{ post.published_date }}
+            <div class="title"><h2>{{ post.title }}</h2></div>
+            <img src="{{ post.image_up.url }}" alt=""/>
+                <p>{{ post.post_body }}</p>
+            <a href=" {% url 'user_page' pk=post.author.id %} "><p>Autor: {{ post.author }}</p></a>
+            <div class="backButton"><a href=" {% url 'dash' %}"><h4>Volver</h4></a></div>
+            {% if request.user.is_authenticated and user == post.author %}
+            <div class="editButton"><a href=" {% url 'edit_post' pk=post.pk %}"><h4>Editar</h4></a></div>
+            <div class="deleteButton"><a href=" {% url 'delete_post' pk=post.pk %}"><h4>Eliminar Post </h4></a></div>
+            {% endif %}
+        <div class="postElements">
+    </div>
+{% endblock %}

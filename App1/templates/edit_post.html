@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block changeContent %}
+<div class=postForm>
+    <h2>Editar</h2>
+    {% if post.published_date %}
+    {{ post.published_date }}
+{% endif %}
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="formButton">Guardar</button>
+    </form>
+<div>
+{% endblock %}

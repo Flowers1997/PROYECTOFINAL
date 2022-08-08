@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block titulo_principal %}
+
+<div class="mainText">
+    <h2>Coches Usados dotcom</h2>
+</div>
+
+{% endblock %}
+
+{% block sub_titulo_principal %}
+
+<div class="mainText">
+    <h2>Lo mejor para tu familia!</h2>
+</div>
+
+{% endblock %}
+
+{% block changeContent %}
+
+
+<div class="mainText">
+    <h2>Coches Usados dotcom</h2>
+</div>
+    
+
+
+
+<div class="backButton"><a href=" {% url 'dash' %}"><h4>Blog</h4></a></div>
+</div>
+<div class="post">
+    <div class="title">
+        <h2>Ultimas publicaciones</h2>
+    </div>
+    
+    {% for posts in post %}  
+    
+    <div class="postElements">
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+    </div>
+    {% empty %}
+    <h2>No hay publicaciones</h2>
+    {% endfor %}
+    
+</div>
+
+{% endblock %}
+
+
+

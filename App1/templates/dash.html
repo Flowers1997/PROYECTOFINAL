@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block changeContent %}
+
+  
+
+{% for posts in post %}
+<div class="post">
+    <div class="postElements">
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} [Ver post...]</a></h2>
+        <img src="{{ post.image_up.url }}" alt=""/>
+        <p> {{ post.post_body|truncatechars:100 }} </p>
+        <p> por {{ post.author }} </p>
+    </div>    
+</div>
+{% empty %}
+<div class="post">
+    <div class="title"><h2>No hay publicaciones</h2></div>
+</div>
+{% endfor %}
+    
+
+
+{% endblock %}

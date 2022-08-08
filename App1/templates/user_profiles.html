@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block changeContent %}
+
+  
+
+{% for user in users %}
+<div class="post">
+    <div class="postElements">
+        <h2>{{ user.username }}</h2>
+        <p>Nombre: {{ user.first_name }}</p>
+        <p> Apellido: {{ user.last_name }}</p>
+        <p> Mail: {{ user.email }}</p>  
+    </div>    
+</div>
+<!--<a href=" {% url 'user_page' user.id %} "></a>-->
+{% endfor %}
+    
+
+
+{% endblock %}

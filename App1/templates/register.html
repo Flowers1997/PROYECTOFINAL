@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block changeContent %}
+<div class=postForm>
+    <h2>Registro</h2>
+    <h3>{{ message }}
+    <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="formButton">Registrate!</button>
+    </form>
+<div>
+{% endblock %}

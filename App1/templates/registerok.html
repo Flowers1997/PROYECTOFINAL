@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block changeContent %}
+<div class="loginMessage">
+    <h1>Bienvenid@ {{ usuario }}</h1>
+    <h2>{{ message }}</h2>
+</div>
+<div class="mainText">
+<h1>Registro exitoso! </h1>
+<div class="backButton"><a href=" {% url 'login' %}"><h4>Ya podes ingresar </h4></a></div>
+</div>
+
+{% endblock %}
