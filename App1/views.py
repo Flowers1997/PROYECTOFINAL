@@ -1,10 +1,8 @@
-#Blog & Crud
+
 from urllib import request
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post, Avatar
-
-#USER SISTEM
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import AvatarForm, PostForm, UserRegistrationForm, UserEditForm
@@ -15,27 +13,26 @@ from django.contrib.auth.models import User
 
 
 
-#Index
+
 def index(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'index.html', {'posts':posts})
 
 
 
-#About
+
 def about(request):
     return render(request, 'about.html')
-# CRUD-----------------------------------
-#Read all postS    
+   
 def dash(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'dash.html', {'posts':posts})
     
-#Read post
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'post_detail.html', {'post': post})
-#Create post
+
 @login_required
 def new_post(request):
     if request.method == "POST":
@@ -50,7 +47,7 @@ def new_post(request):
         form = PostForm()
     return render(request, 'new_post.html', {'form': form,})
 
-#Edit post
+
 @login_required
 def edit_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -66,7 +63,7 @@ def edit_post(request, pk):
     return render(request, 'edit_post.html', {'form': form})
     
 
-#Delete Post
+
 @login_required
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -74,9 +71,9 @@ def delete_post(request, pk):
     
     return render(request, 'delete_post.html')
     
-#USER SYSTEM---------------------------------
 
-#LOGIN
+
+
 def login_request(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
@@ -112,9 +109,9 @@ def register(request):
         form = UserRegistrationForm()
         return render(request, 'register.html', {'form':form})
     
-#USER PROFILE
 
-#Profile detail
+
+
 @login_required
 def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
@@ -122,7 +119,7 @@ def user_detail(request, pk):
     return render(request, 'user_detail.html', {'user':user, 'url':avatar[0].avatar.url})
 
 
-#Edit profile
+
 
 @login_required
 def edit_profile(request):

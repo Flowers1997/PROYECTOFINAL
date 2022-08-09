@@ -6,7 +6,7 @@
 
   
 
-{% for posts in post %}
+{% for post in posts %}
 <div class="post">
     <div class="postElements">
         <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} [Ver post...]</a></h2>
