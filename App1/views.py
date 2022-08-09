@@ -88,15 +88,15 @@ def login_request(request):
 
                 return render(request, 'index.html', {'usuario':usuario, 'mensaje':'Bienvenido al sistema'})
             else:
-                return render(request, 'login.html', {'form':form, 'mensaje':'USUARIO INCORRECTO, VUELVA A LOGUEAR'})
+                return render(request, 'login.html', {'form':form, 'mensaje':'USUARIO INCORRECTO'})
         else:
-            return render(request, 'login.html', {'form':form, 'mensaje':'FORMULARIO INVALIDO, VUELVA A LOGUEAR'})
+            return render(request, 'login.html', {'form':form, 'mensaje':'FORMULARIO INVALIDO'})
     
     else:
         form=AuthenticationForm()
         return render(request, 'login.html', {'form':form})
 
-#REGISTER
+
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)

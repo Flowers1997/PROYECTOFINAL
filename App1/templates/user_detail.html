@@ -1,6 +1,10 @@
 {% extends 'main.html' %}
 
+{% load static %}
+
 {% block changeContent %}
+
+
 <div class="loginMessage">
     <h1> Perfil {{ usuario }}</h1>
     <h2>{{ message }}</h2>
@@ -24,3 +28,4 @@
 
     </div>
 {% endblock %}
+
