@@ -21,21 +21,19 @@
 {% block changeContent %}
 
 
-<div class="mainText">
-    <h2>Coches Usados dotcom</h2>
-</div>
+
     
 
 
 
-<div class="backButton"><a href=" {% url 'dash' %}"><h4>Blog</h4></a></div>
+<div class="Button"><a href=" {% url 'dash' %}"><h4>Blog</h4></a></div>
 </div>
 <div class="post">
     <div class="title">
         <h2>Ultimas publicaciones</h2>
     </div>
     
-    {% for posts in post %}  
+    {% for post in posts %}  
     
     <div class="postElements">
         <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>

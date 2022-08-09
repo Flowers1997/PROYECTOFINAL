@@ -32,7 +32,7 @@
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href=" {% url 'user_profiles' %}">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link" href=" {% url 'new_post' %}">Nuevo Post</a></li>
-                        <a href=" {% url 'user_detail' user.id %} ">Hola {{user}} [Mi Perfil]</a>
+                        <li class="nav-item"><a class="nav-link" href=" {% url 'user_detail' user.id %} ">[Mi Perfil]</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
@@ -67,12 +67,12 @@
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        <a href="#!"><img class="card-img-top" src="media\blog\kilometros.jpg" alt="..." /></a>
                         <div class="card-body">
-                            <div class="small text-muted">January 1, 2022</div>
-                            <h2 class="card-title">Primera entrada</h2>
-                            <p class="card-text">Primera entrada</p>
-                            <a class="btn btn-primary" href="#!">lee mas →</a>
+                            
+                            <h2 class="card-title">Los autos mas confiables del mercado!</h2>
+                            <p class="card-text">Con KM REALES!</p>
+                            
                         </div>
                     </div>
                     <!-- Nested row for non-featured blog posts-->
@@ -80,22 +80,22 @@
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="media\blog\motor.jpeg" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">2da entrada</h2>
-                                    <p class="card-text">Otro mas</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    
+                                    <h2 class="card-title h4">Nuestras instalaciones!</h2>
+                                    <p class="card-text">Contamos con lo ultimo en herramientas de la industria automotriz!</p>
+                                    
                                 </div>
                             </div>
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="media\blog\mecanico.jpg" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">3ra entrada</h2>
-                                    <p class="card-text">contenido</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    
+                                    <h2 class="card-title h4">Mecanicos de primera!</h2>
+                                    <p class="card-text">NUESTRO EQUIPO DE PROFESIONALES SON SIMBOLO DE TRANQUILIDAD</p>
+                                    
                                 </div>
                             </div>
                         </div>

@@ -38,4 +38,4 @@ class MemberUser(models.Model):
 class Avatar(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     
-    avatar= models.ImageField(upload_to='avatar', null=True, blank=True, default='avatar/avatarDefault.png')
+    avatar= models.ImageField(upload_to='avatar', null=True, blank=True, default='media\avatar\avatarDefault.png')

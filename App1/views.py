@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
+from media.avatar import *
 
 
 
@@ -115,8 +116,12 @@ def register(request):
 @login_required
 def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
-    avatar=Avatar.objects.filter(user=request.user.id) 
-    return render(request, 'user_detail.html', {'user':user, 'url':avatar[0].avatar.url})
+    #avatar=Avatar.objects.filter(user=request.user.id) 
+    avatar=Avatar.objects.filter(user=request.user.id)
+    if (len(avatar)!=0):
+       return render(request, 'user_detail.html', {'user':user, 'url':avatar[0].avatar.url})
+    else:
+        return render(request, 'user_detail.html', {'user':user})
 
 
 
