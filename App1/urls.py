@@ -1,8 +1,10 @@
 from django.urls import path
 from App1 import *
 from .views import *
-#USER SISTEM
+from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+
 
 
 
@@ -11,8 +13,8 @@ urlpatterns = [
     
     path('', index, name='index'),
     path('dash/', dash, name='dash'),
-   # path('app1/dash', dash, name='dash'),
-    path('about/', about, name='about'),
+   
+    path('about', about, name='about'),
     
     path('post/<int:pk>/', post_detail, name='post_detail'),
     path('post/new/', new_post, name='new_post'),
@@ -28,6 +30,9 @@ urlpatterns = [
     path('user_profiles', user_profiles, name='user_profiles'),
     path('user_page/<pk>/', user_page.as_view(), name='user_page'),
     path('add_avatar/', add_avatar, name='add_avatar'),
-]
+    path('chat',chat,name='chat'),
+    path('chat/mandar_mensaje', MandarMensaje.as_view(), name='mandar_mensaje'),
+    ]
+urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

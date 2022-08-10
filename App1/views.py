@@ -11,6 +11,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
 from media.avatar import *
+from .models import Mensaje
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 
 
@@ -172,3 +175,25 @@ def add_avatar(request):
     else:
         form=AvatarForm()
     return render(request, 'add_avatar.html', {'form':form, 'usuario':user})
+
+@login_required
+def chat(request):
+
+    mensajes=Mensaje.objects.filter(receptor_id=request.user.id)
+    mensajes_enviados=Mensaje.objects.filter(emisor_id=request.user.id)
+    return render (request, 'chat.html', {'mensajes':mensajes,'mensajes_enviados':mensajes_enviados})
+
+class MandarMensaje(CreateView, LoginRequiredMixin):
+    model = Mensaje
+    template_name="mensajes.html"
+    success_url = reverse_lazy('chat')
+    fields = ['cuerpo','receptor']
+
+    def form_valid(self, form):
+        self.mensaje = form.save(commit=False)
+        self.mensaje.emisor_id = self.request.user.id
+        self.mensaje.save()
+
+        return super(MandarMensaje, self).form_valid(form)
+    
+    

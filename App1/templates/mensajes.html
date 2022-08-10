@@ -1,0 +1,18 @@
+{% extends "logout.html" %}
+
+{% load static %}
+
+{% block changeContent %}
+
+<form method="post" style="text-align:center ;">{% csrf_token %}
+    {{form.as_p}}
+    <input type ="submit" value="Enviar">
+    
+
+
+
+</form>
+
+
+
+{% endblock %}

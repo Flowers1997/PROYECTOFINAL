@@ -1,4 +1,4 @@
-{% extends 'main.html' %}
+{% extends 'logout.html' %}
 
 {% block changeContent %}
 
@@ -7,7 +7,8 @@
     <h2>Login - Ingresa con tu mail y clave</h2>
     <form method="POST">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="formButton">LogIn</button>
+        <button type="submit" href="{% url 'index' %}" class="formButton">LogIn</button>
+        
     </form>
 <div>
 {% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'logout.html' %}
+
+{% block changeContent %}
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            
+
+
+            <h2 class="display-2">Chats</h2>
+            <p></p>
+            <p><a  class="btn btn-success" href="{% url 'mandar_mensaje' %}" &amp;>Enviar mensaje</a></p>
+            <p></p>
+            {% if mensajes %}
+            
+
+
+            <h2 class="display-4">Inbox: </h2>
+            <p></p>   
+
+                {% for mensaje in mensajes %}
+
+                 <div class="card">
+                  <div class="card-body">
+                    <p><h3>Emisor: {{mensaje.emisor}}</h3></p>
+                    <p>Mensaje: {{mensaje.cuerpo}}</p>
+                    <p><h5>Fecha: {{mensaje.enviado}}</h5></p>
+                  </div> 
+                </div>
+                    
+    
+
+                {% endfor %}
+                <p></p>
+            {% else %}
+
+            <h2 class="display-4" style="text-align: center;">No recibiste mensajes </h2>
+            {% endif %}
+
+            {% if mensajes_enviados %}
+            <h2 class="display-4" style="text-align: center;">Sent: </h2>
+            <p></p> 
+                {% for mensaje in mensajes_enviados %}
+                 <div class="card" >
+                  <div class="card-body">                
+                    
+                    <p><h3>Para: {{mensaje.receptor}}</h3></p>
+                    <p>Mensaje: {{mensaje.cuerpo}}</p>
+                    <p><h5>Fecha: {{mensaje.enviado}}</h5></p>
+                  </div>
+                 </div>
+                
+                {% endfor %}
+            {% else %}
+                <h2 class="display-4" style="text-align: center;">No enviaste mensajes </h2>
+            {% endif %}
+
+
+
+{% endblock %}

@@ -1,7 +1,8 @@
 #Blog
 from django import forms
-from .models import Post, Avatar
-from App1 import models
+
+from .models import Avatar,Post
+
 #USER SYSTEM
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
@@ -22,6 +23,7 @@ class UserRegistrationForm(UserCreationForm):
     email= forms.EmailField(required=True)
     password1= forms.CharField(label="Contraseña", widget=forms.PasswordInput)
     password2= forms.CharField(label="Confirmar contraseña", widget=forms.PasswordInput)
+    
     class Meta:
         model=User
         fields=('username', 'email', 'password1', 'password2')
@@ -42,5 +44,7 @@ class UserEditForm(UserCreationForm):
         
 
 #Avatar
-class AvatarForm(forms.Form):
-    avatar= forms.ImageField(label="Avatar")
+class AvatarForm(forms.Form):   
+    imagen= forms.ImageField(label="imagen")
+
+    
