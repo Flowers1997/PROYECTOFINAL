@@ -33,6 +33,6 @@ urlpatterns = [
     path('chat',chat,name='chat'),
     path('chat/mandar_mensaje', MandarMensaje.as_view(), name='mandar_mensaje'),
     ]
-urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
