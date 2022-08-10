@@ -1,9 +1,6 @@
-#Blog
+
 from django import forms
-
 from .models import Avatar,Post
-
-#USER SYSTEM
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 
@@ -17,7 +14,6 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'post_body', 'image_up')
    
-#USER SYSTEM
 
 class UserRegistrationForm(UserCreationForm):
     email= forms.EmailField(required=True)
@@ -43,7 +39,6 @@ class UserEditForm(UserCreationForm):
         fields=('email', 'password1', 'password2', 'last_name', 'first_name')
         
 
-#Avatar
 class AvatarForm(forms.Form):   
     imagen= forms.ImageField(label="imagen")
 
