@@ -1,4 +1,5 @@
 
+from pickle import NONE
 from urllib import request
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
@@ -27,6 +28,16 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def posteo1(request):
+    return render(request,'posteo1.html')
+
+def posteo2(request):
+    return render(request,'posteo2.html')
+
+def epaviejo(request):
+    return render(request, 'epaviejo.html')
+
    
 def dash(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
@@ -78,26 +89,6 @@ def delete_post(request, pk):
 
 
 
-def login_request(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request=request, data=request.POST)
-        if form.is_valid():
-            usuario=form.cleaned_data.get('username')
-            clave=form.cleaned_data.get('password')
-            user=authenticate(username=usuario, password=clave)
-
-            if user is not None:
-                login(request, user)
-
-                return render(request, 'index.html', {'usuario':usuario, 'mensaje':'Bienvenido al sistema'})
-            else:
-                return render(request, 'login.html', {'form':form, 'mensaje':'USUARIO INCORRECTO'})
-        else:
-            return render(request, 'login.html', {'form':form, 'mensaje':'FORMULARIO INVALIDO'})
-    
-    else:
-        form=AuthenticationForm()
-        return render(request, 'login.html', {'form':form})
 
 
 def register(request):
@@ -163,18 +154,41 @@ def add_avatar(request):
     if request.method == 'POST':
         form=AvatarForm(request.POST, request.FILES)
         if form.is_valid():
-
-            previousAvatar=Avatar.objects.get(user=request.user)
-            if(previousAvatar.avatar):
+            previousAvatar=Avatar.objects.filter(user=request.user.id)
+            if previousAvatar is NONE:
+                avatar=Avatar(user=user, avatar=form.cleaned_data['avatar'])
+                avatar.save()
+        else:
                 previousAvatar.delete()
-            avatar=Avatar(user=user, avatar=form.cleaned_data['avatar'])
-            avatar.save()
+                avatar=Avatar(user=user, avatar=form.cleaned_data['avatar'])
+                avatar.save()
         
         return render(request, 'user_detail.html', {'usuario':user, 'mensaje':'AVATAR AGREGADO EXITOSAMENTE'})
 
     else:
         form=AvatarForm()
     return render(request, 'add_avatar.html', {'form':form, 'usuario':user})
+
+def login_request(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request=request, data=request.POST)
+        if form.is_valid():
+            usuario=form.cleaned_data.get('username')
+            clave=form.cleaned_data.get('password')
+            user=authenticate(username=usuario, password=clave)
+
+            if user is not None:
+                login(request, user)
+
+                return render(request, 'index.html', {'usuario':usuario, 'mensaje':'Bienvenido al sistema'})
+            else:
+                return render(request, 'login.html', {'form':form, 'mensaje':'USUARIO INCORRECTO'})
+        else:
+            return render(request, 'login.html', {'form':form, 'mensaje':'FORMULARIO INVALIDO'})
+    
+    else:
+        form=AuthenticationForm()
+        return render(request, 'login.html', {'form':form})
 
 @login_required
 def chat(request):
@@ -195,5 +209,3 @@ class MandarMensaje(CreateView, LoginRequiredMixin):
         self.mensaje.save()
 
         return super(MandarMensaje, self).form_valid(form)
-    
-    

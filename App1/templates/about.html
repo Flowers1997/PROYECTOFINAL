@@ -1,18 +1,24 @@
+{% extends "padre_post.html" %}
+{% load static %} 
 
-{% extends 'main.html' %}
+{% block titulo_principal %}
+<h1 class="fw-bolder mb-1">Quienes Somos?</h1>
+{% endblock %}
 
-{% load static %}
+{% block fecha_posteo %}            
+<div class="text-muted fst-italic mb-2">Posteado en Agosto 5 del 2022, por Tomas y Juan</div>
+{% endblock %}
 
-{% block changeContent %}
-<div class="mainText">
-<h1>Acerca de mí </h1>
-<p>
-    Hola soy JUancito
-</p>
-<div class="backButton"><a href=" {% url 'index' %}"><h4>Blog</h4></a></div>
-</div>
+{% block parrafo %}
+<p class="fs-5 mb-4">Nosotros somos Tomas Santiago Gonzalez y Juan Rossi, dos jovenes de la republica Argentina, que  desde muy pequeños nos facinamos con el mundo de la informatica y la tecnologia, y con el objetivo de aumentar nuestros conocimientos, y motivados por la demanda y en el mundo de la programacion, decidimos adentrarnos en los cursos de programacion de Coder house para poder aprender mas sobre lo que nos interesa.</p>
 
 {% endblock %}
 
+{% block subtitulo %}
+<h2 class="fw-bolder mb-4 mt-5">Acerca de este Blog</h2>
+{% endblock %}
 
-
+{% block parrafos %}
+<p class="fs-5 mb-4">Este blog es nuestro proyecto final, es decir el agrupamiento de todas las habilidades y conocimientos que hemos adquirido hasta este momento; el cual entregaremos para ser corregido por los evaluadores del curso "Python" realizado en Coder house. </p>
+<p class="fs-5 mb-4">Como podra ver a medida que navege por nuestro blog, las tematicas de los posteos son variadas, y no necesariamente tienen que ver con la realidad de nuestras vidas...(o si). </p>
+{% endblock %}

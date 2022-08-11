@@ -4,6 +4,7 @@
 
 {% block changeContent %}
 
+<div class="text-center my-5">
 <form method="post" style="text-align:center ;">{% csrf_token %}
     {{form.as_p}}
     <input type ="submit" value="Enviar">
@@ -12,7 +13,9 @@
 
 
 </form>
+</div>
+{% endblock %}
 
-
+{% block titulo_principal %}
 
 {% endblock %}

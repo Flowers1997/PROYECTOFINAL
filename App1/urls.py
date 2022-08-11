@@ -8,13 +8,12 @@ from django.conf import settings
 
 
 
-
 urlpatterns = [
     
     path('', index, name='index'),
     path('dash/', dash, name='dash'),
-   
-    path('about', about, name='about'),
+   # path('app1/dash', dash, name='dash'),
+    path('about/', about, name='about'),
     
     path('post/<int:pk>/', post_detail, name='post_detail'),
     path('post/new/', new_post, name='new_post'),
@@ -30,9 +29,11 @@ urlpatterns = [
     path('user_profiles', user_profiles, name='user_profiles'),
     path('user_page/<pk>/', user_page.as_view(), name='user_page'),
     path('add_avatar/', add_avatar, name='add_avatar'),
+    path('post1', posteo1, name= "Posteo1"),
+    path('post2', posteo2, name= "Posteo2"),
+    path('ups/', epaviejo,name="Ups"),
     path('chat',chat,name='chat'),
     path('chat/mandar_mensaje', MandarMensaje.as_view(), name='mandar_mensaje'),
-    ]
-#urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 
