@@ -3,7 +3,7 @@ El planteo y la realizacion integra del trabajo fue echa totalmente conjunto por
 
 # INSTRUCCIONES PROYECTO FINAL TOMAS GONZALEZ Y JUAN ROSSI
 
-# Al abrir el proyecto en su VSC en la consoloa usted debera escribir python manage.py runserver
+# Al abrir el proyecto en su VSC en la consola usted debera escribir python manage.py runserver
 # Este comando le devolvera un link al que si usted se dirige lo llevara a la vista principal de nuestro blog
 # visualizando la vista principal, en la misma podra ver:
  - Titulo del Blog y sus creadores
